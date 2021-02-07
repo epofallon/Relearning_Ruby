@@ -1,11 +1,15 @@
+def digit_product(str_num)
+  digits = str_num.chars.map { |n| n.to_i }
+  product = 0
 
-def find_first_nonzero_among(numbers)
-  numbers.each do |n|
-    return n if n.nonzero?
-  end
+  product = digits.each do |digit|
+              product *= digit
+            end
+
+  product
 end
 
-# Examples
 
-find_first_nonzero_among([0, 0, 1, 0, 2, 0])
-find_first_nonzero_among([1])
+p digit_product('12345')
+# expected return value: 120
+# actual return value: 0
