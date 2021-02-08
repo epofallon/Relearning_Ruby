@@ -1,15 +1,21 @@
-def digit_product(str_num)
-  digits = str_num.chars.map { |n| n.to_i }
-  product = 0
 
-  product = digits.each do |digit|
-              product *= digit
-            end
+# Each player starts with the same basic stats.
 
-  product
-end
+player = { strength: 10, dexterity: 10, charisma: 10, stamina: 10 }
 
+# Then the player picks a character class and gets an upgrade accordingly.
 
-p digit_product('12345')
-# expected return value: 120
-# actual return value: 0
+character_classes = {
+  warrior: { strength:  20 },
+  thief:   { dexterity: 20 },
+  scout:   { stamina:   20 },
+  mage:    { charisma:  20 }
+}
+
+puts 'Please type your class (warrior, thief, scout, mage):'
+input = gets.chomp.downcase.to_sym
+puts character_classes[input]
+player.merge!(character_classes[input])
+
+puts 'Your character stats:'
+puts player
